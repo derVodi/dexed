@@ -8,10 +8,10 @@
 # It expects the following environment variables to be set:
 # - MAC_SIGNING_CERT: The name (CN) of the certificate to sign the executable with
 # - MAC_INSTALLING_CERT: The name (CN) of the certificate to sign the installation with
+# - MAC_INSTALLING_B64: The base64 encoded certificate to sign the executable with
 # - MAC_SIGNING_ID: The apple id to sign the package with
 # - MAC_TEAM_ID: The team id to sign the package with
 # - MAC_TEAM_PASSWORD : The password for the apple id
-#
 # Documentation for pkgbuild and productbuild: https://developer.apple.com/library/archive/documentation/DeveloperTools/Reference/DistributionDefinitionRef/Chapters/Distribution_XML_Ref.html
 # Taken from surge tuning-note-claps: https://github.com/surge-synthesizer/tuning-note-claps/tree/main/scripts
 
@@ -21,14 +21,14 @@ set -e
 
 # The product (eg plugin name, Dexed)
 PRODUCT=$1
-# The directory where the plugin binaries are located
+# The directory where the plugin binaries are built
 INDIR=$2
-# The directory where the Readme and License files are located
-RESOURCESDIR=$3
-# The directory where the DMG will be created
-TARGET_DIR=$4
 # The version of the product (eg 1.0.0)
-VERSION=$5
+VERSION=$3
+# The target directory where the final dmg is placed
+TARGET_DIR=$4
+# Output base filename (eg dexed-macOS-1.0.0)
+OUTPUT_BASE_FILENAME=$5
 
 TMPDIR="./installer-tmp"
 VST3="${PRODUCT}.vst3"
@@ -36,7 +36,6 @@ AU="${PRODUCT}.component"
 CLAP="${PRODUCT}.clap"
 APP="${PRODUCT}.app"
 PRODUCTFILE=`echo $PRODUCT | tr ' ' '-' | tr '[:upper:]' '[:lower:]'`
-OUTPUT_BASE_FILENAME="${PRODUCTFILE}-macOS-$VERSION"
 
 # We create a postinstall script since dropping the app in /Applications 
 # does not work
@@ -45,12 +44,11 @@ cat > $TMPDIR/AppResourcesPackageScript/postinstall << PIEND
 #!/bin/bash
 rsync -r -p --delete "/tmp/dsgb-install/$APP" /Applications
 chown -R \$USER:staff "/Applications/$APP";
-#rm -rf /tmp/dsgb-install
 PIEND
 chmod 755 $TMPDIR/AppResourcesPackageScript/postinstall
 mkdir -p $TARGET_DIR
 
-echo "MAKE from $INDIR $RESOURCESDIR into $TARGET_DIR with $VERSION"
+echo "MAKE from $INDIR into $TARGET_DIR with $VERSION"
 
 build_flavor()
 {
@@ -87,7 +85,6 @@ build_flavor()
       codesign  -vvv --deep --stric "$workdir/$flavorprod"
 
       pkgbuild --sign "$MAC_INSTALLING_CERT" --root $workdir --identifier $ident --version $VERSION --install-location "$loc" "$TMPDIR/${PRODUCTFILE}_${flavor}.pkg" $sca || exit 1
-      echo pkgbuild --sign "$MAC_INSTALLING_CERT" --root $workdir --identifier $ident --version $VERSION --install-location "$loc" "$TMPDIR/${PRODUCTFILE}_${flavor}.pkg" $sca || exit 1
     else
       pkgbuild --root $workdir --identifier $ident --version $VERSION --install-location "$loc" "$TMPDIR/${PRODUCTFILE}_${flavor}.pkg" $sca || exit 1
     fi
@@ -158,10 +155,10 @@ XMLEND
 pushd ${TMPDIR}
 if [[ ! -z $MAC_INSTALLING_CERT ]]; then
     echo "Building SIGNED PKG"
-    productbuild --sign "$MAC_INSTALLING_CERT" --distribution ./distribution.xml --package-path "." --resources ../${RESOURCESDIR} "$OUTPUT_BASE_FILENAME.pkg"
+    productbuild --sign "$MAC_INSTALLING_CERT" --distribution ./distribution.xml --package-path "." "$OUTPUT_BASE_FILENAME.pkg"
 else 
     echo "Building UNSIGNED PKG"
-    productbuild --distribution ./distribution.xml --package-path "." --resources ../${RESOURCESDIR} "$OUTPUT_BASE_FILENAME.pkg"
+    productbuild --distribution ./distribution.xml --package-path "." "$OUTPUT_BASE_FILENAME.pkg"
 fi
 
 popd
