@@ -236,7 +236,7 @@ public:
             String normalizedPgmName = normalizePgmName(getRawVoice() + ((i * 128) + 118));
             String displayProgramName = normalizedPgmName;
             if (withNumberPrefix) {
-                displayProgramName = String(std::to_string (i));
+                displayProgramName = String(std::to_string (i + 1));
                 displayProgramName.append(". ",2) ;
                 displayProgramName.append(normalizedPgmName,10) ;
             }

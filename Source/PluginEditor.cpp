@@ -332,6 +332,9 @@ void DexedAudioProcessorEditor::storeProgram() {
         destSysex.getProgramNames(programs, true);
         dialog.addComboBox("Dest", programs, "Program Destination");
 
+        ComboBox *destinationCombobBox = dialog.getComboBoxComponent("Dest");
+        destinationCombobBox->setSelectedItemIndex(processor->getCurrentProgram());
+
         if ( externalFile == NULL ) {
             StringArray saveAction;
             saveAction.add("Store program to DAW plugin song state");
@@ -363,9 +366,8 @@ void DexedAudioProcessorEditor::storeProgram() {
 
         if ( response == 0 ) {
             TextEditor *name = dialog.getTextEditor("Name");
-            ComboBox *dest = dialog.getComboBoxComponent("Dest");
 
-            int programNum = dest->getSelectedItemIndex();
+            int programNum = destinationCombobBox->getSelectedItemIndex();
             String programName(name->getText());
             if ( programName.length() > 10 ) {
                 int toStrip = programName.length() - 10;
