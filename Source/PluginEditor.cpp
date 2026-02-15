@@ -152,7 +152,7 @@ void DexedAudioProcessorEditor::loadCart(File file) {
 void DexedAudioProcessorEditor::saveCart() {
     File startFileName = processor->activeFileCartridge.exists() ? processor->activeFileCartridge : processor->dexedCartDir;
 
-    FileChooser fc ("Export DX sysex...", processor->dexedCartDir, "*.syx;*.SYX", 1);
+    FileChooser fc ("Export DX sysex...", startFileName, "*.syx;*.SYX", 1);
     if ( fc.browseForFileToSave(true) ) {
         if ( ! processor->currentCart.saveVoice(fc.getResults().getReference(0)) ) {
             AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
