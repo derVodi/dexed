@@ -329,7 +329,7 @@ void DexedAudioProcessorEditor::storeProgram() {
         // TODO: fix the name length to 10
 
         StringArray programs;
-        destSysex.getProgramNames(programs);
+        destSysex.getProgramNames(programs, true);
         dialog.addComboBox("Dest", programs, "Program Destination");
 
         if ( externalFile == NULL ) {

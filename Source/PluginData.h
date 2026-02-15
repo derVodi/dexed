@@ -230,10 +230,18 @@ public:
         return (char *) voiceData;
     }
     
-    void getProgramNames(StringArray &dest) {
+    void getProgramNames(StringArray &dest, bool withNumberPrefix = false) {
         dest.clear();
-        for (int i = 0; i < 32; i++)
-            dest.add( normalizePgmName(getRawVoice() + ((i * 128) + 118)) );
+        for (int i = 0; i < 32; i++){
+            String normalizedPgmName = normalizePgmName(getRawVoice() + ((i * 128) + 118));
+            String displayProgramName = normalizedPgmName;
+            if (withNumberPrefix) {
+                displayProgramName = String(std::to_string (i));
+                displayProgramName.append(". ",2) ;
+                displayProgramName.append(normalizedPgmName,10) ;
+            }
+            dest.add(displayProgramName);
+        }
     }
     
     String getProgramName(int idx) {
