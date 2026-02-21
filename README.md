@@ -10,4 +10,4 @@ This is not the official Dexed Repository. You probably want to go to one of the
 Differences
 ===========
 
-https://github.com/derVodi/dexed/compare
+[Official master <=> SoundSelecting](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:SoundSelecting)

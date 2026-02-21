@@ -81,7 +81,7 @@ bool ProgramListBox::keyPressed(const KeyPress &key, Component *originatingCompo
     if ( key.isKeyCode(KeyPress::returnKey) ) {
         activePgm = programLabel->idx;
         if ( activePgm != -1 ) {
-            listener->programAutoCopied(this, activePgm);
+            listener->programSelected(this, activePgm);
         }
         return true;
     }

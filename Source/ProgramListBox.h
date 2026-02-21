@@ -32,7 +32,6 @@ public:
     virtual void programSelected(ProgramListBox *source, int pos) = 0;
     virtual void programRightClicked(ProgramListBox *source, int pos) = 0;
     virtual void programDragged(ProgramListBox *destListBox, int dest, char *packedPgm) = 0;
-    virtual void programAutoCopied(ProgramListBox *source, int pos) = 0;
 };
 
 class ProgramLabel;
