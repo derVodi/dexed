@@ -17,3 +17,5 @@ Differences
 [master <=> NumbersInStoreComboBox](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:NumbersInStoreComboBox)
 
 [master <=> SoundSelecting](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:SoundSelecting)
+
+<a href="https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:NumbersInStoreComboBox" target="_blank">master <=> SoundSelecting</a>
