@@ -12,4 +12,8 @@ Differences
 
 [master <=> master-vodi](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:master-vodi)
 
-[Official master <=> SoundSelecting](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:SoundSelecting)
+[master <=> AutoCopy](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:AutoCopy)
+
+[master <=> NumbersInStoreComboBox](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:NumbersInStoreComboBox)
+
+[master <=> SoundSelecting](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:SoundSelecting)
