@@ -19,7 +19,7 @@ ArchitecturesInstallIn64BitMode=x64
 CloseApplicationsFilter=*.exe,*.vst3
 DefaultDirName={autopf}\{#Name}\
 DefaultGroupName={#Name}
-DisableDirPage=yes
+DisableDirPage=no
 DisableProgramGroupPage=yes
 #ifdef License
 LicenseFile={#License}
@@ -68,15 +68,11 @@ Name: "SA"; Description: "Standalone"; Types: full custom standalone; Flags: che
 
 [Files]
 #ifdef CLAP
-Source: "{#StagedAssets}\{#Name}.clap"; DestDir: "{autocf}\CLAP\{#Publisher}\"; Components: CLAP; Flags: ignoreversion
+Source: "{#StagedAssets}\{#Name}.clap"; DestDir: "{autocf}\CLAP\"; Components: CLAP; Flags: ignoreversion
 #endif
 
 #ifdef VST3
-#ifdef VST3_IS_SINGLE_FILE
-Source: "{#StagedAssets}\{#Name}.vst3"; DestDir: "{autocf}\VST3\{#Publisher}\"; Components: VST3; Flags: ignoreversion
-#else
-Source: "{#StagedAssets}\{#Name}.vst3\*"; DestDir: "{autocf}\VST3\{#Publisher}\{#Name}.vst3\"; Components: VST3; Flags: ignoreversion recursesubdirs
-#endif
+Source: "{#StagedAssets}\{#Name}.vst3\*"; DestDir: "{autocf}\VST3\{#Name}.vst3\"; Components: VST3; Flags: ignoreversion recursesubdirs
 #endif
 
 #ifdef SA
@@ -104,6 +100,11 @@ Source: "{#Data}\*"; DestDir: "{code:get_data_path}"; Flags: ignoreversion recur
 
 [Icons]
 Name: "{group}\{#Name}"; Filename: "{app}\{#Name}.exe"; Flags: createonlyiffileexists
+
+#ifdef VST3
+[InstallDelete]
+Type: files; Name: "{autocf}\VST3\{#Name}.vst3"
+#endif VST3
 
 [Code]
 function get_data_path(Param: string): string;
