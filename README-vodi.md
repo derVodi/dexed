@@ -10,7 +10,7 @@ This is not the official Dexed Repository. You probably want to go to one of the
 Differences
 ===========
 
-[master ↔ master-vodi](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:master-vodi){:target="_blank"}
+[master ↔ master-vodi](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:master-vodi)
 
 [master ↔ AutoCopy](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:AutoCopy)
 
@@ -18,4 +18,4 @@ Differences
 
 [master ↔ SoundSelecting](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:SoundSelecting)
 
-<a href="https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:NumbersInStoreComboBox" target="_blank">master ↔ NumbersInStoreComboBox</a>
+[master ↔ StoreRespectsCurrentIndex](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:StoreRespectsCurrentIndex)
