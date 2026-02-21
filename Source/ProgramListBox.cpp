@@ -81,7 +81,7 @@ bool ProgramListBox::keyPressed(const KeyPress &key, Component *originatingCompo
     if ( key.isKeyCode(KeyPress::returnKey) ) {
         activePgm = programLabel->idx;
         if ( activePgm != -1 ) {
-            listener->programAutoCopied(this, activePgm);
+            listener->programSelected(this, activePgm);
         }
         return true;
     }
@@ -106,11 +106,6 @@ bool ProgramListBox::keyPressed(const KeyPress &key, Component *originatingCompo
             currentIdx -= 32;
     } else {
         return false;
-    }
-
-    activePgm = currentIdx;
-    if ( activePgm != -1 ) {
-        listener->programSelected(this, activePgm);
     }
 
     labels[currentIdx]->grabKeyboardFocus();
