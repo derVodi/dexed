@@ -10,12 +10,12 @@ This is not the official Dexed Repository. You probably want to go to one of the
 Differences
 ===========
 
-[master <=> master-vodi](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:master-vodi)
+[master ↔ master-vodi](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:master-vodi){:target="_blank"}
 
-[master <=> AutoCopy](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:AutoCopy)
+[master ↔ AutoCopy](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:AutoCopy)
 
-[master <=> NumbersInStoreComboBox](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:NumbersInStoreComboBox)
+[master ↔ NumbersInStoreComboBox](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:NumbersInStoreComboBox)
 
-[master <=> SoundSelecting](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:SoundSelecting)
+[master ↔ SoundSelecting](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:SoundSelecting)
 
-<a href="https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:NumbersInStoreComboBox" target="_blank">master <=> SoundSelecting</a>
+<a href="https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:NumbersInStoreComboBox" target="_blank">master ↔ NumbersInStoreComboBox</a>
