@@ -14,6 +14,8 @@ Differences
 
 [master ↔ AutoCopy](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:AutoCopy)
 
+[master ↔ DragDropSwapWhenLocal](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:DragDropSwapWhenLocal)
+
 [master ↔ LoadAfterExplicitConfirmation](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:LoadAfterExplicitConfirmation)
 
 [master ↔ NumbersInStoreComboBox](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:NumbersInStoreComboBox)
