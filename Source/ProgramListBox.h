@@ -39,6 +39,8 @@ class ProgramLabel;
 class ProgramListBox : public Component, public KeyListener {
     ProgramListBoxListener *listener;    
     Cartridge cartContent;
+    char swapBuffer[128];
+    
     std::unique_ptr<ProgramLabel> labels[32];
 
     bool hasContent;
@@ -119,6 +121,10 @@ public:
         return pgmListBox->cartContent.getProgramName(idx);
     }
 
+    ProgramListBox* getProgramListBox(){
+        return pgmListBox;
+    }
+
     void loadProgram() {
         if ( ! pgmListBox->hasContent )
             return;        
@@ -187,9 +193,21 @@ public:
         ProgramLabel *dest = dynamic_cast<ProgramLabel*>(comp);
         jassert(dest);
 
+        bool swapInsteadOfCopy = false;
+
+        if ( dest->getProgramListBox() == pgmListBox){
+            char *destinationProgramPointer = pgmListBox->cartContent.getRawVoice() + (idx*128);
+            memcpy(pgmListBox->swapBuffer, destinationProgramPointer, 128);
+            swapInsteadOfCopy = true;            
+        }
+        
         MemoryBlock* block = dragSourceDetails.description.getBinaryData();
-        if ( pgmListBox->listener != nullptr )
+        if ( pgmListBox->listener != nullptr ){
             pgmListBox->listener->programDragged(pgmListBox, idx, (char *)block->getData());
+            if ( swapInsteadOfCopy ){
+                pgmListBox->listener->programDragged(pgmListBox, dest->idx, pgmListBox->swapBuffer);    
+            }
+        }
 
         repaint();
     }
