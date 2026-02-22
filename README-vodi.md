@@ -18,6 +18,8 @@ Differences
 
 [master ↔ NumbersInStoreComboBox](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:NumbersInStoreComboBox)
 
+[master ↔ SaveRespectsCurrentFilename](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:SaveRespectsCurrentFilename)
+
 [master ↔ SoundSelecting](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:SoundSelecting)
 
 [master ↔ StoreRespectsCurrentIndex](https://github.com/asb2m10/dexed/compare/master...derVodi:dexed:StoreRespectsCurrentIndex)
