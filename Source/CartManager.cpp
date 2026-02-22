@@ -336,7 +336,6 @@ void CartManager::buttonClicked(juce::Button *buttonThatWasClicked) {
 void CartManager::fileDoubleClicked(const File& file) {
     if ( file.isDirectory() )
         return;
-
     mainWindow->loadCart(file);
     activeCart->setCartridge(mainWindow->processor->currentCart);
     updateCartFilename();
