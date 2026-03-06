@@ -130,9 +130,16 @@ std::unique_ptr<ComponentTraverser> DexedAudioProcessorEditor::createFocusTraver
 }
 
 void DexedAudioProcessorEditor::loadCart(File file) {
+
+    int rc = AlertWindow::showOkCancelBox(AlertWindow::QuestionIcon, "Load Cartridge",
+                                          "This will replace the current cartridge. "
+                                          "Are you sure?");
+    if ( rc == 0 )
+        return;
+
     Cartridge cart;
 
-    int rc = cart.load(file);
+    rc = cart.load(file);
 
     if ( rc < 0 ) {
         AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
