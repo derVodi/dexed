@@ -197,7 +197,7 @@ public:
         bool swapInsteadOfCopy = true;
 
         if ( swapInsteadOfCopy ){
-            char *destinationProgramPointer = pgmListBox->cartContent.getRawVoice() + (idx*128);
+            char *destinationProgramPointer = dest->getProgramListBox()->cartContent.getRawVoice() + (idx*128);
             memcpy(pgmListBox->swapBuffer, destinationProgramPointer, 128);
             swapInsteadOfCopy = true;            
         }
