@@ -189,23 +189,26 @@ public:
         inDrag = false;
 
         Component *comp = dragSourceDetails.sourceComponent.get();
-        ProgramLabel *dest = dynamic_cast<ProgramLabel*>(comp);
-        jassert(dest);
+        ProgramLabel *sourceProgramLabel = dynamic_cast<ProgramLabel*>(comp);
+        jassert(sourceProgramLabelPointer);
 
-        // bool swapInsteadOfCopy = ( dest->getProgramListBox() == pgmListBox );
+        ProgramListBox *sourcePgmListbox = sourceProgramLabel->getProgramListBox();
+
+        // bool swapInsteadOfCopy = ( sourcePgmListbox == pgmListBox );
         bool swapInsteadOfCopy = true;
 
         if ( swapInsteadOfCopy ){
-            char *destinationProgramPointer = dest->getProgramListBox()->cartContent.getRawVoice() + (idx*128);
+            char *destinationProgramPointer = pgmListBox->cartContent.getRawVoice() + (idx*128);
             memcpy(pgmListBox->swapBuffer, destinationProgramPointer, 128);
             swapInsteadOfCopy = true;            
         }
         
         MemoryBlock* block = dragSourceDetails.description.getBinaryData();
+
         if ( pgmListBox->listener != nullptr ){
             pgmListBox->listener->programDragged(pgmListBox, idx, (char *)block->getData());
             if ( swapInsteadOfCopy ){
-                pgmListBox->listener->programDragged(pgmListBox, dest->idx, pgmListBox->swapBuffer);    
+                pgmListBox->listener->programDragged(sourcePgmListbox, sourceProgramLabel->idx, pgmListBox->swapBuffer);    
             }
         }
 
