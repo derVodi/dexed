@@ -193,9 +193,10 @@ public:
         ProgramLabel *dest = dynamic_cast<ProgramLabel*>(comp);
         jassert(dest);
 
-        bool swapInsteadOfCopy = false;
+        // bool swapInsteadOfCopy = ( dest->getProgramListBox() == pgmListBox );
+        bool swapInsteadOfCopy = true;
 
-        if ( dest->getProgramListBox() == pgmListBox){
+        if ( swapInsteadOfCopy ){
             char *destinationProgramPointer = pgmListBox->cartContent.getRawVoice() + (idx*128);
             memcpy(pgmListBox->swapBuffer, destinationProgramPointer, 128);
             swapInsteadOfCopy = true;            
